@@ -1,4 +1,4 @@
-# SOLID Python
+# SOLID Python.
 This are Exercises that are Part of SOLID Principles Linked In Learning
 https://www.linkedin.com/learning/learning-solid-programming-principles/benefits-of-solid-programming-principles?autoplay=true
 
