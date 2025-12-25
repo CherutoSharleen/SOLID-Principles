@@ -1,0 +1,46 @@
+# SOLID Retrieval Pipeline
+
+## What it teaches
+
+- Dependency inversion via `Tokenizer` and `Retriever` contracts
+- Single-responsibility separation between tokenization and retrieval
+- Local search over a synthetic corpus
+- Swappable implementations (boolean overlap and BM25 ranking)
+
+## Run
+
+```bash
+cd examples/retrieval_pipeline
+python app.py
+```
+
+## Test
+
+```bash
+cd examples/retrieval_pipeline
+python -m unittest discover -s tests -p "test_*.py"
+```
+
+## Components
+
+- `contracts.py`: protocol contracts
+- `boolean_retriever.py`: basic overlap retriever implementation
+- `bm25_retriever.py`: BM25 implementation using the same interfaces
+- `corpus.py`: synthetic documents
+- `app.py`: CLI entry point
+
+## Run with BM25 mode
+
+```bash
+cd examples/retrieval_pipeline
+python app.py
+# choose "bm25" when prompted
+```
+
+## Data note
+
+All documents are fictional/synthetic.
+
+## Disclosure
+
+This is a retrospective educational addition created now. Historical author/committer dates may be used for commit metadata and do not indicate the actual execution date of this work.
