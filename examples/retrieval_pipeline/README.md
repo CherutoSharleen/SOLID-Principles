@@ -6,6 +6,7 @@
 - Single-responsibility separation between tokenization and retrieval
 - Local search over a synthetic corpus
 - Swappable implementations (boolean overlap and BM25 ranking)
+- Transparent overlap explanations for the boolean mode
 
 ## Run
 
@@ -28,6 +29,7 @@ python -m unittest discover -s tests -p "test_*.py"
 - `bm25_retriever.py`: BM25 implementation using the same interfaces
 - `corpus.py`: synthetic documents
 - `app.py`: CLI entry point
+- `explain.py`: query-term explanation helper
 
 ## Run with BM25 mode
 
