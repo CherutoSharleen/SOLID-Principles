@@ -1,6 +1,6 @@
 import unittest
 
-from boolean_retriever import BasicTokenizer, BooleanRetriever, PrefixStemTokenizer
+from boolean_retriever import BasicTokenizer, BooleanRetriever, PrefixStemTokenizer, StopwordTokenizer
 from corpus import DOCUMENTS
 
 
@@ -17,6 +17,11 @@ class BooleanRetrieverTests(unittest.TestCase):
     def test_stem_tokenizer_normalizes_suffixes(self) -> None:
         tokens = PrefixStemTokenizer().tokenize("ranking ranked")
         self.assertIn("rank", tokens)
+
+    def test_stopword_tokenizer_removes_common_words(self) -> None:
+        tokens = StopwordTokenizer().tokenize("the ranking of data and search")
+        self.assertNotIn("the", tokens)
+        self.assertNotIn("and", tokens)
 
 
 if __name__ == "__main__":

@@ -1,14 +1,19 @@
 from __future__ import annotations
 
 from bm25_retriever import BM25Retriever
-from boolean_retriever import BasicTokenizer, BooleanRetriever, PrefixStemTokenizer
+from boolean_retriever import BasicTokenizer, BooleanRetriever, PrefixStemTokenizer, StopwordTokenizer
 from corpus import DOCUMENTS
 from explain import explain_overlap
 
 
 def main() -> None:
-    tokenizer_mode = input("Tokenizer mode (basic/stem) [basic]: ").strip().lower() or "basic"
-    tokenizer = PrefixStemTokenizer() if tokenizer_mode == "stem" else BasicTokenizer()
+    tokenizer_mode = input("Tokenizer mode (basic/stem/stopword) [basic]: ").strip().lower() or "basic"
+    if tokenizer_mode == "stem":
+        tokenizer = PrefixStemTokenizer()
+    elif tokenizer_mode == "stopword":
+        tokenizer = StopwordTokenizer()
+    else:
+        tokenizer = BasicTokenizer()
     mode = input("Retriever mode (boolean/bm25) [boolean]: ").strip().lower() or "boolean"
     retriever = BM25Retriever(DOCUMENTS, tokenizer) if mode == "bm25" else BooleanRetriever(DOCUMENTS, tokenizer)
     print("SOLID Retrieval Pipeline Demo")

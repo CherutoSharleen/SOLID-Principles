@@ -25,6 +25,14 @@ class PrefixStemTokenizer:
         return normalized
 
 
+class StopwordTokenizer:
+    STOPWORDS = {"the", "and", "or", "for", "to", "in", "a", "of"}
+
+    def tokenize(self, text: str) -> list[str]:
+        base = re.findall(r"[a-z0-9_]+", text.lower())
+        return [token for token in base if token not in self.STOPWORDS]
+
+
 class BooleanRetriever(Retriever):
     def __init__(self, documents: dict[str, str], tokenizer: Tokenizer) -> None:
         self.documents = documents
