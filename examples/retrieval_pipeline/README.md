@@ -42,7 +42,3 @@ python app.py
 ## Data note
 
 All documents are fictional/synthetic.
-
-## Disclosure
-
-This is a retrospective educational addition created now. Historical author/committer dates may be used for commit metadata and do not indicate the actual execution date of this work.
