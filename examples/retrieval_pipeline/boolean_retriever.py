@@ -11,6 +11,20 @@ class BasicTokenizer:
         return re.findall(r"[a-z0-9_]+", text.lower())
 
 
+class PrefixStemTokenizer:
+    def tokenize(self, text: str) -> list[str]:
+        raw = re.findall(r"[a-z0-9_]+", text.lower())
+        normalized: list[str] = []
+        for token in raw:
+            if token.endswith("ing") and len(token) > 5:
+                normalized.append(token[:-3])
+            elif token.endswith("ed") and len(token) > 4:
+                normalized.append(token[:-2])
+            else:
+                normalized.append(token)
+        return normalized
+
+
 class BooleanRetriever(Retriever):
     def __init__(self, documents: dict[str, str], tokenizer: Tokenizer) -> None:
         self.documents = documents
