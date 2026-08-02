@@ -1,7 +1,7 @@
 import unittest
 
 from boolean_retriever import BasicTokenizer
-from explain import explain_overlap
+from explain import explain_overlap, overlap_ratio
 
 
 class ExplainTests(unittest.TestCase):
@@ -14,6 +14,12 @@ class ExplainTests(unittest.TestCase):
         )
         self.assertEqual(explanation["search"], 2)
         self.assertEqual(explanation["ranking"], 1)
+
+    def test_overlap_ratio(self) -> None:
+        tokenizer = BasicTokenizer()
+        ratio = overlap_ratio("search ranking missing", "Search systems use ranking.", tokenizer)
+        self.assertGreaterEqual(ratio, 0.0)
+        self.assertLessEqual(ratio, 1.0)
 
 
 if __name__ == "__main__":
