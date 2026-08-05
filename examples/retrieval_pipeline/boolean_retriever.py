@@ -54,3 +54,7 @@ class BooleanRetriever(Retriever):
                 scores[doc_id] += 1.0
         ranked = sorted(scores.items(), key=lambda row: row[1], reverse=True)
         return ranked[:top_k]
+
+
+def unique_query_tokens(query: str, tokenizer: Tokenizer) -> list[str]:
+    return sorted(set(tokenizer.tokenize(query)))

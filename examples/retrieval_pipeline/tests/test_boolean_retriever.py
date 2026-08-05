@@ -1,6 +1,12 @@
 import unittest
 
-from boolean_retriever import BasicTokenizer, BooleanRetriever, PrefixStemTokenizer, StopwordTokenizer
+from boolean_retriever import (
+    BasicTokenizer,
+    BooleanRetriever,
+    PrefixStemTokenizer,
+    StopwordTokenizer,
+    unique_query_tokens,
+)
 from corpus import DOCUMENTS
 
 
@@ -22,6 +28,10 @@ class BooleanRetrieverTests(unittest.TestCase):
         tokens = StopwordTokenizer().tokenize("the ranking of data and search")
         self.assertNotIn("the", tokens)
         self.assertNotIn("and", tokens)
+
+    def test_unique_query_tokens(self) -> None:
+        tokens = unique_query_tokens("search search ranking", BasicTokenizer())
+        self.assertEqual(tokens, ["ranking", "search"])
 
 
 if __name__ == "__main__":
