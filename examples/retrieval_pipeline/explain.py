@@ -18,3 +18,7 @@ def overlap_ratio(query: str, document: str, tokenizer: Tokenizer) -> float:
         return 0.0
     overlap = explain_overlap(query, document, tokenizer)
     return len(overlap) / len(set(query_tokens))
+
+
+def query_token_count(query: str, tokenizer: Tokenizer) -> int:
+    return len(tokenizer.tokenize(query))
