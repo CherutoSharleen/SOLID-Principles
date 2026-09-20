@@ -29,6 +29,10 @@ class BM25Retriever(Retriever):
         df = self.df.get(token, 0)
         return math.log(1 + (n - df + 0.5) / (df + 0.5))
 
+    def query_idf(self, query: str) -> dict[str, float]:
+        tokens = set(self.tokenizer.tokenize(query))
+        return {token: self._idf(token) for token in tokens}
+
     def search(self, query: str, top_k: int = 3) -> list[tuple[str, float]]:
         query_tokens = self.tokenizer.tokenize(query)
         scores: dict[str, float] = {}

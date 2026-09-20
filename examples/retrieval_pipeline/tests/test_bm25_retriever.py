@@ -15,6 +15,11 @@ class BM25RetrieverTests(unittest.TestCase):
         retriever = BM25Retriever(DOCUMENTS, BasicTokenizer())
         self.assertEqual(retriever.search("zzzz qqqq", top_k=3), [])
 
+    def test_query_idf(self) -> None:
+        retriever = BM25Retriever(DOCUMENTS, BasicTokenizer())
+        idf = retriever.query_idf("boolean search")
+        self.assertIn("boolean", idf)
+
 
 if __name__ == "__main__":
     unittest.main()
