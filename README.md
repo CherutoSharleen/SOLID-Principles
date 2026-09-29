@@ -27,3 +27,10 @@ After that the test suite can be run.
 ```sh
 tox
 ```
+
+## Educational mini-project in this repository
+
+- **Path:** `examples/retrieval_pipeline`
+- **Focus:** SOLID-friendly retrieval components (boolean + BM25 + explanation helpers).
+- **Run:** `cd examples/retrieval_pipeline && python app.py`
+- **Test:** `cd examples/retrieval_pipeline && python -m unittest discover -s tests -p "test_*.py"`
